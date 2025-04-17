@@ -9,8 +9,14 @@
   <body>
     <h1>01 - Form</h1>
     <form action="/submit">
-      <span>Name</span>
-      <input type="text" />
+      <!-- The issue here was that the name text was enclosed in a span element. 
+       Fix was to change the span to a label (for accessibility... I believe 
+       screen readers use this information to communicate information to the user) 
+       but to also enclose the input element inside the label element. -->
+      <label
+        >Name
+        <input type="text" />
+      </label>
       <br /><br />
       <label>
         Email
@@ -18,9 +24,23 @@
       </label>
       <br /><br />
       <span>Favorite Character</span>
-      <div><input type="radio" id="spongebob" />Spongebob</div>
-      <div><input type="radio" id="patrick" />Patrick</div>
-      <div><input type="radio" id="sandy" />Sandy</div>
+      <div>
+        <!-- Similarly to the previos error, the div element encloses the input 
+         however there was not an associated label connected to the input. The fix 
+         was to add the label, we do not need to enclose the input inside the label 
+         because there is an id associated with it. We simply put the label after the 
+         input and tag it with the input's id. -->
+        <input type="radio" id="spongebob" />
+        <label for="spongebob">Spongebob</label>
+      </div>
+      <div>
+        <input type="radio" id="patrick" />
+        <label for="patrick">patrick</label>
+      </div>
+      <div>
+        <input type="radio" id="sandy" />
+        <label for="sandy">Sandy</label>
+      </div>
       <br />
       <button>Submit</button>
     </form>
